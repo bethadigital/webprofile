@@ -339,7 +339,8 @@ export default function App() {
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-50" style={{ background:'rgba(255,255,255,0.95)', backdropFilter:'blur(16px)', borderBottom:'1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-6xl mx-auto px-8 h-[66px] flex items-center justify-between">
-          <div className="font-serif text-2xl font-semibold tracking-widest">
+          <div className="flex items-center gap-3 font-serif text-2xl font-semibold tracking-widest">
+            <img src="/icon.png" alt="Betha Digital" className="h-9 w-auto" />
             <span style={{ color:'#111111' }}>BETHA</span>
             <span className="neon-glow-sm" style={{ color:'#cc0000' }}>digital</span>
           </div>
