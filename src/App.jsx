@@ -329,9 +329,12 @@ function PackageCard({ pkg }) {
 export default function App() {
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [activeVideo, setActiveVideo] = useState(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const closeLightbox = useCallback(() => setLightboxIndex(null), [])
   const prevPhoto = useCallback(() => setLightboxIndex(i => (i - 1 + galleryPhotos.length) % galleryPhotos.length), [])
   const nextPhoto = useCallback(() => setLightboxIndex(i => (i + 1) % galleryPhotos.length), [])
+
+  const navLinks = [['Tentang','#about'],['Foto','#gallery'],['Video','#video'],['Event','#event'],['Paket','#packages']]
 
   return (
     <div className="min-h-screen page-expose">
@@ -343,8 +346,10 @@ export default function App() {
             <img src="/icon.png" alt="Mono Gram" className="h-9 w-auto" />
             <span style={{ color:'#30364F' }}>Monogram</span>
           </div>
+
+          {/* Desktop menu */}
           <ul className="hidden lg:flex items-center gap-7 list-none">
-            {[['Tentang','#about'],['Foto','#gallery'],['Video','#video'],['Event','#event'],['Paket','#packages']].map(([label,href]) => (
+            {navLinks.map(([label,href]) => (
               <li key={href}>
                 <a href={href} className="no-underline transition-colors"
                   style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, color:'rgba(48,54,79,0.55)' }}
@@ -357,6 +362,44 @@ export default function App() {
             <li>
               <a href="#contact" className="no-underline transition-all hover:-translate-y-0.5"
                 style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, background:'#30364F', color:'#F0F0DB', padding:'10px 20px', fontWeight:400 }}>
+                Hubungi
+              </a>
+            </li>
+          </ul>
+
+          {/* Hamburger button */}
+          <button
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 bg-transparent border-none cursor-pointer"
+            onClick={() => setMobileMenuOpen(o => !o)}
+            aria-label="Toggle menu">
+            <span className="block w-6 h-px transition-all duration-300"
+              style={{ background:'#30364F', transform: mobileMenuOpen ? 'translateY(4px) rotate(45deg)' : 'none' }} />
+            <span className="block w-6 h-px transition-all duration-300"
+              style={{ background:'#30364F', opacity: mobileMenuOpen ? 0 : 1 }} />
+            <span className="block w-6 h-px transition-all duration-300"
+              style={{ background:'#30364F', transform: mobileMenuOpen ? 'translateY(-4px) rotate(-45deg)' : 'none' }} />
+          </button>
+        </div>
+
+        {/* Mobile drawer */}
+        <div className="lg:hidden overflow-hidden transition-all duration-300"
+          style={{ maxHeight: mobileMenuOpen ? '400px' : '0', borderTop: mobileMenuOpen ? '1px solid rgba(48,54,79,0.08)' : 'none' }}>
+          <ul className="flex flex-col list-none px-8 py-4 gap-1" style={{ background:'rgba(240,240,219,0.98)' }}>
+            {navLinks.map(([label,href]) => (
+              <li key={href}>
+                <a href={href}
+                  className="block no-underline py-3 transition-colors"
+                  style={{ fontFamily:'var(--font-serif)', fontSize:16, letterSpacing:1, color:'rgba(48,54,79,0.65)', borderBottom:'1px solid rgba(48,54,79,0.07)' }}
+                  onClick={() => setMobileMenuOpen(false)}>
+                  {label}
+                </a>
+              </li>
+            ))}
+            <li className="pt-3">
+              <a href="#contact"
+                className="block no-underline text-center py-3 transition-all"
+                style={{ fontFamily:'var(--font-serif)', fontSize:15, background:'#30364F', color:'#F0F0DB', letterSpacing:2 }}
+                onClick={() => setMobileMenuOpen(false)}>
                 Hubungi
               </a>
             </li>
