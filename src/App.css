@@ -26,24 +26,24 @@
 }
 .page-expose { animation: page-expose 0.9s ease-out both; }
 
-/* ── Accent Glow (Red) ── */
-.neon-glow    { text-shadow: 0 0 8px rgba(204,0,0,0.5), 0 0 20px rgba(204,0,0,0.25); }
-.neon-glow-sm { text-shadow: 0 0 6px rgba(204,0,0,0.4), 0 0 14px rgba(204,0,0,0.2); }
-.neon-box     { box-shadow: 0 0 20px rgba(204,0,0,0.1), inset 0 0 20px rgba(204,0,0,0.02); }
+/* ── Accent Glow (Navy) ── */
+.neon-glow    { text-shadow: 0 0 8px rgba(172,186,196,0.6), 0 0 20px rgba(172,186,196,0.3); }
+.neon-glow-sm { text-shadow: 0 0 6px rgba(172,186,196,0.5), 0 0 14px rgba(172,186,196,0.2); }
+.neon-box     { box-shadow: 0 0 20px rgba(48,54,79,0.1), inset 0 0 20px rgba(48,54,79,0.02); }
 .neon-box-hover:hover {
-  box-shadow: 0 4px 25px rgba(0,0,0,0.1);
-  border-color: rgba(204,0,0,0.35) !important;
+  box-shadow: 0 4px 25px rgba(48,54,79,0.12);
+  border-color: rgba(172,186,196,0.5) !important;
 }
 
 /* ── Card ── */
 .cyber-card {
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.1);
+  background: #F0F0DB;
+  border: 1px solid rgba(48,54,79,0.12);
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 .cyber-card:hover {
-  border-color: rgba(204,0,0,0.3);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-color: rgba(172,186,196,0.55);
+  box-shadow: 0 4px 20px rgba(48,54,79,0.1);
 }
 
 /* ── Accent Corners ── */
@@ -52,19 +52,19 @@
   position: absolute;
   width: 14px; height: 14px;
   border-style: solid;
-  border-color: rgba(204,0,0,0.4);
+  border-color: rgba(172,186,196,0.55);
 }
 .cyber-corner-tl { top:0;    left:0;   border-width: 1.5px 0 0 1.5px; }
 .cyber-corner-tr { top:0;    right:0;  border-width: 1.5px 1.5px 0 0; }
 .cyber-corner-bl { bottom:0; left:0;   border-width: 0 0 1.5px 1.5px; }
 .cyber-corner-br { bottom:0; right:0;  border-width: 0 1.5px 1.5px 0; }
-.cyber-corner-bright { border-color: rgba(204,0,0,0.85); }
+.cyber-corner-bright { border-color: rgba(48,54,79,0.8); }
 
 /* ── Grid Background ── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(48,54,79,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48,54,79,0.04) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -75,7 +75,7 @@
 }
 .holo-shimmer {
   position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(204,0,0,0.04) 50%, rgba(0,0,0,0.02) 58%, transparent 65%);
+  background: linear-gradient(105deg, transparent 40%, rgba(172,186,196,0.06) 50%, rgba(48,54,79,0.02) 58%, transparent 65%);
   background-size: 200% 100%;
   animation: holo-shift 5s linear infinite;
   pointer-events: none;
@@ -83,14 +83,14 @@
 
 /* ── Type Cursor ── */
 @keyframes cursor-blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-.type-cursor::after { content:'_'; animation: cursor-blink 1s step-end infinite; color: #cc0000; }
+.type-cursor::after { content:'_'; animation: cursor-blink 1s step-end infinite; color: #30364F; }
 
 /* ── Focus Corners (hero) ── */
 .focus-corners { position: absolute; inset: -20px; pointer-events: none; }
 @keyframes focus-pulse { 0%,100% { opacity:0.3; } 50% { opacity:0.7; } }
 .focus-corner-c {
   position: absolute; width: 22px; height: 22px;
-  border-style: solid; border-color: rgba(204,0,0,0.6);
+  border-style: solid; border-color: rgba(172,186,196,0.7);
   animation: focus-pulse 3s ease-in-out infinite;
 }
 .focus-corner-c.tl { top:0;    left:0;   border-width:2px 0 0 2px; animation-delay:0s; }
@@ -107,15 +107,15 @@ svg[style*="spin-cw"] { transform-origin: center; }
 @keyframes shutter-sweep { from { transform:translateY(-110%); } to { transform:translateY(110%); } }
 .gallery-item::after {
   content:''; position:absolute; inset:0;
-  background: linear-gradient(180deg, transparent 0%, rgba(204,0,0,0.06) 50%, transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(172,186,196,0.08) 50%, transparent 100%);
   transform: translateY(-110%); pointer-events:none; z-index:5;
 }
 .gallery-item:hover::after { animation: shutter-sweep 0.38s ease-out; }
 .gallery-item { transition: box-shadow 0.3s; }
-.gallery-item:hover { box-shadow: 0 0 0 2px rgba(204,0,0,0.45), 0 4px 20px rgba(0,0,0,0.15); }
+.gallery-item:hover { box-shadow: 0 0 0 2px rgba(172,186,196,0.6), 0 4px 20px rgba(48,54,79,0.15); }
 
 /* ── Film Strip ── */
 @keyframes film-crawl { 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
 .film-strip { display:flex; overflow:hidden; width:100%; }
 .film-strip-track { display:flex; gap:3px; animation:film-crawl 20s linear infinite; will-change:transform; }
-.film-hole { width:18px; height:28px; border-radius:3px; background:rgba(204,0,0,0.08); border:1px solid rgba(204,0,0,0.2); flex-shrink:0; }
+.film-hole { width:18px; height:28px; border-radius:3px; background:rgba(172,186,196,0.15); border:1px solid rgba(172,186,196,0.35); flex-shrink:0; }

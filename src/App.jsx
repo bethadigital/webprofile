@@ -52,11 +52,11 @@ function ApertureIris({ size = 240, opacity = 0.28, spinning = true }) {
       width={size} height={size} viewBox="0 0 100 100"
       style={{ opacity, animation: spinning ? 'spin-cw 35s linear infinite' : 'none', display:'block' }}
     >
-      <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(204,0,0,0.3)" strokeWidth="0.4" />
-      <circle cx="50" cy="50" r="43" fill="none" stroke="rgba(204,0,0,0.15)" strokeWidth="0.3" strokeDasharray="2 4" />
+      <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(172,186,196,0.4)" strokeWidth="0.4" />
+      <circle cx="50" cy="50" r="43" fill="none" stroke="rgba(172,186,196,0.2)" strokeWidth="0.3" strokeDasharray="2 4" />
       {[0,30,60,90,120,150].map(angle => (
         <ellipse key={angle} cx="50" cy="50" rx="34" ry="9"
-          fill="none" stroke="rgba(204,0,0,0.45)" strokeWidth="0.7"
+          fill="none" stroke="rgba(172,186,196,0.55)" strokeWidth="0.7"
           transform={`rotate(${angle} 50 50)`} />
       ))}
       {Array.from({length:36}).map((_,i) => {
@@ -65,11 +65,11 @@ function ApertureIris({ size = 240, opacity = 0.28, spinning = true }) {
         return <line key={i}
           x1={50 + Math.cos(rad)*r1} y1={50 + Math.sin(rad)*r1}
           x2={50 + Math.cos(rad)*48} y2={50 + Math.sin(rad)*48}
-          stroke="rgba(204,0,0,0.35)" strokeWidth="0.4" />
+          stroke="rgba(172,186,196,0.45)" strokeWidth="0.4" />
       })}
-      <circle cx="50" cy="50" r="14" fill="none" stroke="rgba(204,0,0,0.6)" strokeWidth="0.8" />
-      <circle cx="50" cy="50" r="4"  fill="rgba(204,0,0,0.5)" />
-      <circle cx="50" cy="50" r="7"  fill="none" stroke="rgba(204,0,0,0.35)" strokeWidth="0.5" strokeDasharray="1 2" />
+      <circle cx="50" cy="50" r="14" fill="none" stroke="rgba(48,54,79,0.5)" strokeWidth="0.8" />
+      <circle cx="50" cy="50" r="4"  fill="rgba(48,54,79,0.6)" />
+      <circle cx="50" cy="50" r="7"  fill="none" stroke="rgba(172,186,196,0.45)" strokeWidth="0.5" strokeDasharray="1 2" />
     </svg>
   )
 }
@@ -78,38 +78,38 @@ function ApertureIris({ size = 240, opacity = 0.28, spinning = true }) {
 function CameraSVG({ size = 280, opacity = 0.3 }) {
   return (
     <svg width={size} height={size * 0.75} viewBox="0 0 200 150" fill="none" style={{ opacity, display:'block' }}>
-      <rect x="18" y="45" width="164" height="95" rx="10" stroke="rgba(30,30,30,0.7)" strokeWidth="1.5" />
-      <rect x="65" y="30" width="70" height="22" rx="5" stroke="rgba(30,30,30,0.5)" strokeWidth="1.2" />
-      <circle cx="148" cy="30" r="8" stroke="rgba(30,30,30,0.6)" strokeWidth="1.2" />
-      <circle cx="148" cy="30" r="4" fill="rgba(30,30,30,0.25)" />
-      <circle cx="90" cy="93" r="40" stroke="rgba(30,30,30,0.65)" strokeWidth="1.5" />
-      <circle cx="90" cy="93" r="33" stroke="rgba(30,30,30,0.3)" strokeWidth="1" strokeDasharray="3 3"
+      <rect x="18" y="45" width="164" height="95" rx="10" stroke="rgba(48,54,79,0.5)" strokeWidth="1.5" />
+      <rect x="65" y="30" width="70" height="22" rx="5" stroke="rgba(48,54,79,0.35)" strokeWidth="1.2" />
+      <circle cx="148" cy="30" r="8" stroke="rgba(48,54,79,0.4)" strokeWidth="1.2" />
+      <circle cx="148" cy="30" r="4" fill="rgba(48,54,79,0.2)" />
+      <circle cx="90" cy="93" r="40" stroke="rgba(48,54,79,0.45)" strokeWidth="1.5" />
+      <circle cx="90" cy="93" r="33" stroke="rgba(48,54,79,0.2)" strokeWidth="1" strokeDasharray="3 3"
         style={{ animation:'spin-ccw 20s linear infinite', transformOrigin:'90px 93px' }} />
-      <circle cx="90" cy="93" r="25" stroke="rgba(30,30,30,0.45)" strokeWidth="1" />
+      <circle cx="90" cy="93" r="25" stroke="rgba(48,54,79,0.3)" strokeWidth="1" />
       {[0,30,60,90,120,150].map(a => (
         <ellipse key={a} cx="90" cy="93" rx="20" ry="6"
-          fill="none" stroke="rgba(204,0,0,0.4)" strokeWidth="0.8"
+          fill="none" stroke="rgba(172,186,196,0.5)" strokeWidth="0.8"
           transform={`rotate(${a} 90 93)`}
           style={{ animation:`spin-cw 18s linear infinite`, transformOrigin:'90px 93px' }} />
       ))}
-      <circle cx="90" cy="93" r="4" fill="rgba(204,0,0,0.6)" />
-      <rect x="130" y="52" width="28" height="20" rx="3" stroke="rgba(30,30,30,0.4)" strokeWidth="1" />
-      <rect x="82" y="23" width="36" height="8" rx="2" stroke="rgba(30,30,30,0.3)" strokeWidth="1" />
-      <polyline points="18,45 18,55" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="18,45 28,45" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="182,45 182,55" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="182,45 172,45" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="18,140 18,130" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="18,140 28,140" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="182,140 182,130" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
-      <polyline points="182,140 172,140" stroke="rgba(204,0,0,0.8)" strokeWidth="2" />
+      <circle cx="90" cy="93" r="4" fill="rgba(48,54,79,0.7)" />
+      <rect x="130" y="52" width="28" height="20" rx="3" stroke="rgba(48,54,79,0.3)" strokeWidth="1" />
+      <rect x="82" y="23" width="36" height="8" rx="2" stroke="rgba(48,54,79,0.2)" strokeWidth="1" />
+      <polyline points="18,45 18,55" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="18,45 28,45" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="182,45 182,55" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="182,45 172,45" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="18,140 18,130" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="18,140 28,140" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="182,140 182,130" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
+      <polyline points="182,140 172,140" stroke="rgba(172,186,196,0.9)" strokeWidth="2" />
       {Array.from({length:24}).map((_,i) => {
         const rad = (i * 15) * Math.PI / 180
         const r1 = i % 3 === 0 ? 37 : 35
         return <line key={i}
           x1={90 + Math.cos(rad)*r1} y1={93 + Math.sin(rad)*r1}
           x2={90 + Math.cos(rad)*40} y2={93 + Math.sin(rad)*40}
-          stroke="rgba(30,30,30,0.4)" strokeWidth="0.6" />
+          stroke="rgba(48,54,79,0.3)" strokeWidth="0.6" />
       })}
     </svg>
   )
@@ -120,12 +120,12 @@ function WeddingRings({ width = 96 }) {
   const h = width * 0.56
   return (
     <svg width={width} height={h} viewBox="0 0 96 54" fill="none">
-      <circle cx="36" cy="27" r="21" stroke="rgba(204,0,0,0.12)" strokeWidth="6" />
-      <circle cx="60" cy="27" r="21" stroke="rgba(30,30,30,0.12)" strokeWidth="6" />
-      <circle cx="36" cy="27" r="21" stroke="rgba(204,0,0,0.75)" strokeWidth="1.8" />
-      <circle cx="60" cy="27" r="21" stroke="rgba(30,30,30,0.65)" strokeWidth="1.8" />
-      <circle cx="36" cy="7"  r="1.5" fill="rgba(204,0,0,0.9)" />
-      <circle cx="60" cy="7"  r="1.5" fill="rgba(30,30,30,0.8)" />
+      <circle cx="36" cy="27" r="21" stroke="rgba(172,186,196,0.2)" strokeWidth="6" />
+      <circle cx="60" cy="27" r="21" stroke="rgba(48,54,79,0.15)" strokeWidth="6" />
+      <circle cx="36" cy="27" r="21" stroke="rgba(172,186,196,0.8)" strokeWidth="1.8" />
+      <circle cx="60" cy="27" r="21" stroke="rgba(48,54,79,0.55)" strokeWidth="1.8" />
+      <circle cx="36" cy="7"  r="1.5" fill="rgba(172,186,196,0.95)" />
+      <circle cx="60" cy="7"  r="1.5" fill="rgba(48,54,79,0.8)" />
     </svg>
   )
 }
@@ -155,11 +155,11 @@ function AnimateIn({ children, delay = 0, className = '' }) {
 function SectionLabel({ children }) {
   return (
     <div className="inline-flex items-center gap-3 mb-5">
-      <div className="w-8 h-px" style={{ background:'rgba(204,0,0,0.5)' }} />
-      <span style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:4, color:'rgba(180,0,0,0.75)', textTransform:'uppercase' }}>
+      <div className="w-8 h-px" style={{ background:'rgba(48,54,79,0.4)' }} />
+      <span style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:4, color:'rgba(48,54,79,0.65)', textTransform:'uppercase' }}>
         {children}
       </span>
-      <div className="w-8 h-px" style={{ background:'rgba(204,0,0,0.5)' }} />
+      <div className="w-8 h-px" style={{ background:'rgba(48,54,79,0.4)' }} />
     </div>
   )
 }
@@ -230,21 +230,21 @@ function VideoCard({ video, onClick, large }) {
         <div className="absolute inset-0" style={{ background:'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)' }} />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-            style={{ border:'1.5px solid rgba(204,0,0,0.5)', transition:'all 0.3s' }}
-            onMouseEnter={e => e.currentTarget.style.boxShadow='0 0 25px rgba(204,0,0,0.5)'}
+            style={{ border:'1.5px solid rgba(172,186,196,0.6)', transition:'all 0.3s' }}
+            onMouseEnter={e => e.currentTarget.style.boxShadow='0 0 25px rgba(172,186,196,0.5)'}
             onMouseLeave={e => e.currentTarget.style.boxShadow='0 0 0 0 transparent'}>
             <svg className="w-5 h-5 fill-white ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
-        <span className="absolute top-3 left-3 text-white text-[9px] font-bold tracking-[2px] uppercase px-2.5 py-1"
-          style={{ fontFamily:'var(--font-mono)', background:'#cc0000' }}>
+        <span className="absolute top-3 left-3 text-[9px] font-bold tracking-[2px] uppercase px-2.5 py-1"
+          style={{ fontFamily:'var(--font-mono)', background:'#30364F', color:'#F0F0DB' }}>
           {video.category}
         </span>
       </div>
       <div className="p-5">
-        <p className="text-[10px] tracking-widest mb-1.5" style={{ fontFamily:'var(--font-mono)', color:'rgba(204,0,0,0.6)' }}>{video.date}</p>
+        <p className="text-[10px] tracking-widest mb-1.5" style={{ fontFamily:'var(--font-mono)', color:'rgba(48,54,79,0.55)' }}>{video.date}</p>
         <h3 className={`font-serif text-gray-900 font-light leading-snug mb-1 ${large ? 'text-2xl' : 'text-lg'}`}>{video.title}</h3>
-        <p className="text-sm" style={{ fontFamily:'var(--font-mono)', color:'rgba(0,0,0,0.5)' }}>{video.couple}</p>
+        <p className="text-sm" style={{ fontFamily:'var(--font-mono)', color:'rgba(48,54,79,0.5)' }}>{video.couple}</p>
       </div>
     </div>
   )
@@ -262,7 +262,7 @@ function VideoModal({ video, onClose }) {
     <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center p-4" style={{ background:'rgba(10,10,10,0.97)' }} onClick={onClose}>
       <button onClick={onClose} className="absolute top-5 right-6 text-white/50 hover:text-white text-4xl font-light leading-none transition-colors z-10 cursor-pointer bg-transparent border-none">×</button>
       <div className="w-full max-w-4xl" onClick={e=>e.stopPropagation()}>
-        <div className="relative w-full overflow-hidden" style={{ paddingTop:'56.25%', border:'1px solid rgba(204,0,0,0.25)', boxShadow:'0 0 60px rgba(0,0,0,0.5)' }}>
+        <div className="relative w-full overflow-hidden" style={{ paddingTop:'56.25%', border:'1px solid rgba(172,186,196,0.3)', boxShadow:'0 0 60px rgba(0,0,0,0.5)' }}>
           <iframe className="absolute inset-0 w-full h-full"
             src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
             title={`${video.couple} - ${video.title}`}
@@ -282,10 +282,10 @@ function VideoModal({ video, onClose }) {
 function PackageCard({ pkg }) {
   return (
     <div className={`relative p-8 text-left cyber-card neon-box-hover transition-all duration-300 hover:-translate-y-1 ${pkg.highlight ? 'neon-box' : ''}`}
-      style={pkg.highlight ? { borderColor:'rgba(204,0,0,0.35)' } : {}}>
+      style={pkg.highlight ? { borderColor:'rgba(172,186,196,0.55)' } : {}}>
       {pkg.badge && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[9px] font-bold tracking-[3px] uppercase px-4 py-1 whitespace-nowrap"
-          style={{ fontFamily:'var(--font-mono)', background:'#cc0000' }}>
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[9px] font-bold tracking-[3px] uppercase px-4 py-1 whitespace-nowrap"
+          style={{ fontFamily:'var(--font-mono)', background:'#30364F', color:'#F0F0DB' }}>
           {pkg.badge}
         </span>
       )}
@@ -297,17 +297,17 @@ function PackageCard({ pkg }) {
       </div>
       {pkg.highlight && <div className="holo-shimmer" />}
 
-      <p className="text-[9px] tracking-[4px] mb-2" style={{ fontFamily:'var(--font-mono)', color:'rgba(180,0,0,0.5)' }}>{pkg.tag}</p>
+      <p className="text-[9px] tracking-[4px] mb-2" style={{ fontFamily:'var(--font-mono)', color:'rgba(48,54,79,0.45)' }}>{pkg.tag}</p>
       <h3 className="font-serif text-3xl font-light text-gray-900 mb-2">{pkg.name}</h3>
       <div className={`font-serif text-xl mb-6 pb-5 ${pkg.highlight ? 'neon-glow' : ''}`}
-        style={{ color:'#cc0000', borderBottom:'1px solid rgba(0,0,0,0.1)' }}>
+        style={{ color:'#30364F', borderBottom:'1px solid rgba(48,54,79,0.12)' }}>
         {pkg.price}
       </div>
       <ul className="flex flex-col gap-2.5 mb-8">
         {pkg.features.map((f, i) => (
           <li key={i} className="flex items-start gap-2 text-xs leading-relaxed" style={{ fontFamily:'var(--font-mono)' }}>
-            <span style={{ color:'#cc0000' }} className="shrink-0">&gt;</span>
-            <span style={{ color:'rgba(0,0,0,0.55)' }}>{f}</span>
+            <span style={{ color:'#ACBAC4' }} className="shrink-0">&gt;</span>
+            <span style={{ color:'rgba(48,54,79,0.6)' }}>{f}</span>
           </li>
         ))}
       </ul>
@@ -316,8 +316,8 @@ function PackageCard({ pkg }) {
         style={{
           fontFamily:'var(--font-mono)',
           ...(pkg.highlight
-            ? { background:'#cc0000', color:'#ffffff', boxShadow:'0 0 20px rgba(204,0,0,0.25)' }
-            : { border:'1px solid rgba(204,0,0,0.35)', color:'#cc0000' }),
+            ? { background:'#30364F', color:'#F0F0DB', boxShadow:'0 0 20px rgba(48,54,79,0.2)' }
+            : { border:'1px solid rgba(48,54,79,0.3)', color:'#30364F' }),
         }}>
         PESAN SEKARANG
       </a>
@@ -337,28 +337,27 @@ export default function App() {
     <div className="min-h-screen page-expose">
 
       {/* ── Navbar ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50" style={{ background:'rgba(255,255,255,0.95)', backdropFilter:'blur(16px)', borderBottom:'1px solid rgba(0,0,0,0.08)' }}>
+      <nav className="fixed top-0 left-0 right-0 z-50" style={{ background:'rgba(240,240,219,0.95)', backdropFilter:'blur(16px)', borderBottom:'1px solid rgba(48,54,79,0.1)' }}>
         <div className="max-w-6xl mx-auto px-8 h-[66px] flex items-center justify-between">
           <div className="flex items-center gap-3 font-serif text-2xl font-semibold tracking-widest">
-            <img src="/icon.png" alt="Betha Digital" className="h-9 w-auto" />
-            <span style={{ color:'#111111' }}>BETHA</span>
-            <span className="neon-glow-sm" style={{ color:'#cc0000' }}>digital</span>
+            <img src="/icon.png" alt="Mono Gram" className="h-9 w-auto" />
+            <span style={{ color:'#30364F' }}>Monogram</span>
           </div>
           <ul className="hidden lg:flex items-center gap-7 list-none">
-            {[['TENTANG','#about'],['FOTO','#gallery'],['VID·WEDDING','#video'],['VID·COMPANY','#company-video'],['PAKET','#packages']].map(([label,href]) => (
+            {[['Tentang','#about'],['Foto','#gallery'],['Video','#video'],['Event','#event'],['Paket','#packages']].map(([label,href]) => (
               <li key={href}>
                 <a href={href} className="no-underline transition-colors"
-                  style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:3, color:'rgba(0,0,0,0.5)' }}
-                  onMouseEnter={e => e.currentTarget.style.color='#cc0000'}
-                  onMouseLeave={e => e.currentTarget.style.color='rgba(0,0,0,0.5)'}>
+                  style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, color:'rgba(48,54,79,0.55)' }}
+                  onMouseEnter={e => e.currentTarget.style.color='#30364F'}
+                  onMouseLeave={e => e.currentTarget.style.color='rgba(48,54,79,0.55)'}>
                   {label}
                 </a>
               </li>
             ))}
             <li>
               <a href="#contact" className="no-underline transition-all hover:-translate-y-0.5"
-                style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, background:'#cc0000', color:'#ffffff', padding:'10px 20px', fontWeight:700 }}>
-                HUBUNGI
+                style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, background:'#30364F', color:'#F0F0DB', padding:'10px 20px', fontWeight:400 }}>
+                Hubungi
               </a>
             </li>
           </ul>
@@ -366,22 +365,22 @@ export default function App() {
       </nav>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background:'#111111' }}>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background:'#30364F' }}>
 
         {/* Wedding photo background */}
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: 'url(https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80)',
           backgroundSize: 'cover', backgroundPosition: 'center 30%',
-          filter: 'brightness(0.45) saturate(0.5)',
+          filter: 'brightness(0.35) saturate(0.4)',
         }} />
 
         {/* Gradient vignette */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(48,54,79,0.2) 0%, rgba(48,54,79,0.7) 70%)' }} />
 
-        {/* Red accent glow */}
+        {/* Accent glow */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background:'radial-gradient(ellipse at 50% 50%, rgba(204,0,0,0.05) 0%, transparent 60%)' }} />
+          style={{ background:'radial-gradient(ellipse at 50% 50%, rgba(172,186,196,0.06) 0%, transparent 60%)' }} />
 
         {/* Camera decoration */}
         <div className="absolute pointer-events-none hidden lg:block"
@@ -409,41 +408,41 @@ export default function App() {
               <WeddingRings width={80} />
             </div>
 
-            <p className="mb-2" style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:5, color:'rgba(204,0,0,0.85)' }}>
+            <p className="mb-2" style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:5, color:'rgba(172,186,196,0.95)' }}>
               ✦ WEDDING &amp; FOTOGRAFER PROFESIONAL ✦
             </p>
 
             <h1 className="font-serif font-light text-white leading-[1.05] mb-6 px-4"
               style={{ fontSize:'clamp(52px,8vw,88px)', letterSpacing:'-1px' }}>
               Abadikan Momen<br />
-              <em className="not-italic neon-glow" style={{ color:'#cc0000' }}>Terindah</em>{' '}Anda
+              <em className="not-italic neon-glow" style={{ color:'#ACBAC4' }}>Terindah</em>{' '}Anda
             </h1>
 
             <div className="flex items-center justify-center gap-3 mb-3">
-              <div className="h-px flex-1 max-w-[60px]" style={{ background:'rgba(255,255,255,0.2)' }} />
-              <span style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:4, color:'rgba(255,255,255,0.45)' }}>
+              <div className="h-px flex-1 max-w-[60px]" style={{ background:'rgba(240,240,219,0.2)' }} />
+              <span style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:4, color:'rgba(240,240,219,0.5)' }}>
                 FOTO · VIDEO · CETAK
               </span>
-              <div className="h-px flex-1 max-w-[60px]" style={{ background:'rgba(255,255,255,0.2)' }} />
+              <div className="h-px flex-1 max-w-[60px]" style={{ background:'rgba(240,240,219,0.2)' }} />
             </div>
 
             <p className="text-sm max-w-lg mx-auto mb-12 pb-4 leading-relaxed"
-              style={{ fontFamily:'var(--font-mono)', color:'rgba(255,255,255,0.4)' }}>
+              style={{ fontFamily:'var(--font-mono)', color:'rgba(240,240,219,0.45)' }}>
               Fotografer &amp; videografer pernikahan terpercaya sejak 2010
             </p>
           </div>
 
           <div className="flex gap-4 justify-center flex-wrap">
             <a href="#packages" className="no-underline transition-all duration-300 hover:-translate-y-0.5"
-              style={{ fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:3, fontWeight:700, background:'#cc0000', color:'#ffffff', padding:'16px 36px' }}
-              onMouseEnter={e => e.currentTarget.style.boxShadow='0 0 30px rgba(204,0,0,0.45)'}
+              style={{ fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:3, fontWeight:700, background:'#ACBAC4', color:'#30364F', padding:'16px 36px' }}
+              onMouseEnter={e => e.currentTarget.style.boxShadow='0 0 30px rgba(172,186,196,0.5)'}
               onMouseLeave={e => e.currentTarget.style.boxShadow='none'}>
               LIHAT PAKET
             </a>
             <a href="#contact" className="no-underline transition-all duration-300 hover:-translate-y-0.5"
-              style={{ fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:3, color:'#ffffff', padding:'16px 36px', border:'1px solid rgba(255,255,255,0.35)' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.7)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.35)' }}>
+              style={{ fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:3, color:'#F0F0DB', padding:'16px 36px', border:'1px solid rgba(240,240,219,0.35)' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(240,240,219,0.7)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(240,240,219,0.35)' }}>
               KONSULTASI GRATIS
             </a>
           </div>
@@ -451,9 +450,9 @@ export default function App() {
       </section>
 
       {/* ── Stats ── */}
-      <section style={{ background:'#f5f5f5', borderTop:'1px solid rgba(0,0,0,0.06)', borderBottom:'1px solid rgba(0,0,0,0.06)' }} className="py-8">
+      <section style={{ background:'#E1D9BC', borderTop:'1px solid rgba(48,54,79,0.1)', borderBottom:'1px solid rgba(48,54,79,0.1)' }} className="py-8">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4" style={{ borderLeft:'1px solid rgba(0,0,0,0.08)' }}>
+          <div className="grid grid-cols-2 md:grid-cols-4" style={{ borderLeft:'1px solid rgba(48,54,79,0.1)' }}>
             {[
               { num:'14+', label:'TAHUN PENGALAMAN' },
               { num:'500+', label:'KLIEN BAHAGIA' },
@@ -461,9 +460,9 @@ export default function App() {
               { num:'2', label:'PAKET PREWEDDING' },
             ].map(s => (
               <div key={s.label} className="flex flex-col items-center gap-2 py-6 px-4"
-                style={{ borderRight:'1px solid rgba(0,0,0,0.08)' }}>
-                <span className="font-serif font-light neon-glow" style={{ fontSize:48, color:'#cc0000', lineHeight:1 }}>{s.num}</span>
-                <span style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:2, color:'rgba(0,0,0,0.4)' }}>{s.label}</span>
+                style={{ borderRight:'1px solid rgba(48,54,79,0.1)' }}>
+                <span className="font-serif font-light neon-glow" style={{ fontSize:48, color:'#30364F', lineHeight:1 }}>{s.num}</span>
+                <span style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:2, color:'rgba(48,54,79,0.5)' }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -471,7 +470,7 @@ export default function App() {
       </section>
 
       {/* ── About ── */}
-      <section id="about" className="relative py-28 px-6 overflow-hidden" style={{ background:'#ffffff' }}>
+      <section id="about" className="relative py-28 px-6 overflow-hidden" style={{ background:'#F0F0DB' }}>
         <div className="absolute pointer-events-none hidden md:block"
           style={{ right:'-4%', top:'50%', transform:'translateY(-50%)', opacity:0.06 }}>
           <ApertureIris size={500} opacity={1} />
@@ -483,11 +482,11 @@ export default function App() {
             </div>
             <SectionLabel>TENTANG KAMI</SectionLabel>
             <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
-              Fotografer &amp; Videografer<br /><span className="neon-glow" style={{ color:'#cc0000' }}>Wedding</span> Profesional
+              Fotografer &amp; Videografer<br /><span className="neon-glow" style={{ color:'#ACBAC4' }}>Wedding</span> Profesional
             </h2>
             <p className="max-w-2xl mx-auto mb-16 leading-relaxed"
-              style={{ fontFamily:'var(--font-mono)', fontSize:13, color:'rgba(0,0,0,0.5)', lineHeight:1.8 }}>
-              BETHAdigital — studio foto &amp; video pernikahan profesional sejak 2010. Kami mengabadikan setiap momen cinta dengan seni visual terdepan dan peralatan terkini.
+              style={{ fontFamily:'var(--font-mono)', fontSize:13, color:'rgba(48,54,79,0.55)', lineHeight:1.8 }}>
+              Monogram — studio foto &amp; video pernikahan profesional sejak 2010. Kami mengabadikan setiap momen cinta dengan seni visual terdepan dan peralatan terkini.
             </p>
           </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
@@ -506,8 +505,8 @@ export default function App() {
                   </div>
                   <div className="holo-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="text-4xl mb-4">{p.icon}</div>
-                  <h4 className="font-bold mb-2 tracking-widest" style={{ fontFamily:'var(--font-mono)', fontSize:11, color:'#cc0000' }}>{p.title}</h4>
-                  <p style={{ fontFamily:'var(--font-mono)', fontSize:11, color:'rgba(0,0,0,0.5)', lineHeight:1.7 }}>{p.desc}</p>
+                  <h4 className="font-bold mb-2 tracking-widest" style={{ fontFamily:'var(--font-mono)', fontSize:11, color:'#30364F' }}>{p.title}</h4>
+                  <p style={{ fontFamily:'var(--font-mono)', fontSize:11, color:'rgba(48,54,79,0.55)', lineHeight:1.7 }}>{p.desc}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -516,7 +515,7 @@ export default function App() {
       </section>
 
       {/* ── Hasil Foto ── */}
-      <section id="gallery" className="py-0" style={{ background:'#fafafa' }}>
+      <section id="gallery" className="py-0" style={{ background:'#F0F0DB' }}>
         <FilmStrip />
         <div className="py-20 px-6">
           <div className="max-w-6xl mx-auto text-center">
@@ -528,7 +527,7 @@ export default function App() {
               <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
                 Momen Pernikahan yang<br />Telah Kami Abadikan
               </h2>
-              <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.4)', lineHeight:1.8 }}>
+              <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.5)', lineHeight:1.8 }}>
                 Setiap frame — sebuah cerita cinta yang abadi
               </p>
             </AnimateIn>
@@ -551,7 +550,7 @@ export default function App() {
                     style={{ background:'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)' }}>
                     <p className="text-white text-sm font-medium tracking-wide translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{photo.alt}</p>
                     <div className="flex items-center gap-1.5 mt-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <span style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:3, color:'rgba(204,0,0,0.9)' }}>LIHAT FOTO →</span>
+                      <span style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:3, color:'rgba(172,186,196,0.95)' }}>LIHAT FOTO →</span>
                     </div>
                   </div>
                 </div>
@@ -560,9 +559,9 @@ export default function App() {
 
             <a href="https://instagram.com/BETHAdigital" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-14 no-underline transition-all duration-300 hover:-translate-y-0.5"
-              style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:3, color:'#cc0000', border:'1px solid rgba(204,0,0,0.35)', padding:'14px 32px' }}
-              onMouseEnter={e=>{ e.currentTarget.style.borderColor='rgba(204,0,0,0.7)'; e.currentTarget.style.boxShadow='0 0 20px rgba(204,0,0,0.1)' }}
-              onMouseLeave={e=>{ e.currentTarget.style.borderColor='rgba(204,0,0,0.35)'; e.currentTarget.style.boxShadow='none' }}>
+              style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:3, color:'#30364F', border:'1px solid rgba(48,54,79,0.35)', padding:'14px 32px' }}
+              onMouseEnter={e=>{ e.currentTarget.style.borderColor='rgba(48,54,79,0.7)'; e.currentTarget.style.boxShadow='0 0 20px rgba(48,54,79,0.08)' }}
+              onMouseLeave={e=>{ e.currentTarget.style.borderColor='rgba(48,54,79,0.35)'; e.currentTarget.style.boxShadow='none' }}>
               📸 INSTAGRAM GALLERY →
             </a>
           </div>
@@ -571,7 +570,7 @@ export default function App() {
       </section>
 
       {/* ── Video Wedding ── */}
-      <section id="video" className="py-28 px-6" style={{ background:'#f5f5f5' }}>
+      <section id="video" className="py-28 px-6" style={{ background:'#E1D9BC' }}>
         <div className="max-w-6xl mx-auto text-center">
           <AnimateIn>
             <div className="flex justify-center mb-5">
@@ -579,9 +578,9 @@ export default function App() {
             </div>
             <SectionLabel>VIDEO WEDDING</SectionLabel>
             <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
-              Cerita Cinta dalam<br /><span className="neon-glow" style={{ color:'#cc0000' }}>Sinema</span>
+              Cerita Cinta dalam<br /><span className="neon-glow" style={{ color:'#ACBAC4' }}>Sinema</span>
             </h2>
-            <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.4)', lineHeight:1.8 }}>
+            <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.5)', lineHeight:1.8 }}>
               Setiap momen pernikahan — direkam menjadi film pendek yang abadi
             </p>
           </AnimateIn>
@@ -594,24 +593,24 @@ export default function App() {
           </div>
           <a href="https://www.youtube.com/@BETHAdigital" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-3 mt-14 no-underline transition-all duration-300 hover:-translate-y-0.5"
-            style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, color:'white', fontWeight:700, background:'#ff0000', padding:'14px 32px' }}
-            onMouseEnter={e=>e.currentTarget.style.boxShadow='0 0 25px rgba(255,0,0,0.4)'}
+            style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, color:'#F0F0DB', fontWeight:700, background:'#30364F', padding:'14px 32px' }}
+            onMouseEnter={e=>e.currentTarget.style.boxShadow='0 0 25px rgba(48,54,79,0.4)'}
             onMouseLeave={e=>e.currentTarget.style.boxShadow='none'}>
-            <svg className="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+            <svg className="w-5 h-5 shrink-0" style={{ fill:'#F0F0DB' }} viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
             YOUTUBE — WEDDING CHANNEL
           </a>
         </div>
       </section>
 
       {/* ── Video Company ── */}
-      <section id="company-video" className="py-28 px-6" style={{ background:'#ffffff' }}>
+      <section id="Event" className="py-28 px-6" style={{ background:'#F0F0DB' }}>
         <div className="max-w-6xl mx-auto text-center">
           <AnimateIn>
             <SectionLabel>VIDEO COMPANY</SectionLabel>
             <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
-              Profil &amp; Dokumentasi<br /><span className="neon-glow" style={{ color:'#cc0000' }}>Korporat</span> Anda
+              Profil &amp; Dokumentasi<br /><span className="neon-glow" style={{ color:'#ACBAC4' }}>Korporat</span> Anda
             </h2>
-            <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.4)', lineHeight:1.8 }}>
+            <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.5)', lineHeight:1.8 }}>
               Company profile — commercial — event documentation
             </p>
           </AnimateIn>
@@ -624,10 +623,10 @@ export default function App() {
           </div>
           <a href="https://www.youtube.com/@BETHAdigital" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-3 mt-14 no-underline transition-all duration-300 hover:-translate-y-0.5"
-            style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, color:'white', fontWeight:700, background:'#ff0000', padding:'14px 32px' }}
-            onMouseEnter={e=>e.currentTarget.style.boxShadow='0 0 25px rgba(255,0,0,0.4)'}
+            style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, color:'#F0F0DB', fontWeight:700, background:'#30364F', padding:'14px 32px' }}
+            onMouseEnter={e=>e.currentTarget.style.boxShadow='0 0 25px rgba(48,54,79,0.4)'}
             onMouseLeave={e=>e.currentTarget.style.boxShadow='none'}>
-            <svg className="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+            <svg className="w-5 h-5 shrink-0" style={{ fill:'#F0F0DB' }} viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
             YOUTUBE — COMPANY CHANNEL
           </a>
         </div>
@@ -638,7 +637,7 @@ export default function App() {
       {lightboxIndex !== null && <Lightbox photos={galleryPhotos} index={lightboxIndex} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />}
 
       {/* ── Paket Wedding ── */}
-      <section id="packages" className="py-28 px-6" style={{ background:'#f5f5f5' }}>
+      <section id="packages" className="py-28 px-6" style={{ background:'#E1D9BC' }}>
         <div className="max-w-6xl mx-auto text-center">
           <AnimateIn>
             <div className="flex justify-center mb-5">
@@ -648,7 +647,7 @@ export default function App() {
             <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
               Pilih Paket yang<br />Sesuai Impian Anda
             </h2>
-            <p className="max-w-lg mx-auto mb-16" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.4)', lineHeight:1.8 }}>
+            <p className="max-w-lg mx-auto mb-16" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.5)', lineHeight:1.8 }}>
               Setiap paket dirancang untuk mengabadikan hari spesial Anda
             </p>
           </AnimateIn>
@@ -663,7 +662,7 @@ export default function App() {
       </section>
 
       {/* ── Paket Prewedding ── */}
-      <section id="prewedding" className="py-28 px-6" style={{ background:'#ffffff' }}>
+      <section id="prewedding" className="py-28 px-6" style={{ background:'#F0F0DB' }}>
         <div className="max-w-6xl mx-auto text-center">
           <AnimateIn>
             <div className="flex justify-center mb-5">
@@ -673,7 +672,7 @@ export default function App() {
             <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
               Rayakan Cinta Sebelum<br />Hari Pernikahan
             </h2>
-            <p className="max-w-lg mx-auto mb-16" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.4)', lineHeight:1.8 }}>
+            <p className="max-w-lg mx-auto mb-16" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.5)', lineHeight:1.8 }}>
               Sesi foto prewedding romantis untuk mengabadikan kisah cinta
             </p>
           </AnimateIn>
@@ -688,14 +687,14 @@ export default function App() {
       </section>
 
       {/* ── Contact ── */}
-      <section id="contact" className="relative py-28 px-6 overflow-hidden" style={{ background:'#f5f5f5' }}>
+      <section id="contact" className="relative py-28 px-6 overflow-hidden" style={{ background:'#E1D9BC' }}>
         <div className="relative max-w-4xl mx-auto text-center">
           <AnimateIn>
             <SectionLabel>HUBUNGI KAMI</SectionLabel>
             <h2 className="font-serif font-light text-gray-900 leading-snug mb-4" style={{ fontSize:'clamp(36px,5vw,56px)' }}>
-              Siap Mengabadikan<br /><span className="neon-glow" style={{ color:'#cc0000' }}>Momen</span> Anda?
+              Siap Mengabadikan<br /><span className="neon-glow" style={{ color:'#ACBAC4' }}>Momen</span> Anda?
             </h2>
-            <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.4)', lineHeight:1.8 }}>
+            <p className="max-w-lg mx-auto mb-14" style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.5)', lineHeight:1.8 }}>
               Konsultasikan kebutuhan dokumentasi pernikahan Anda
             </p>
           </AnimateIn>
@@ -711,8 +710,8 @@ export default function App() {
                 className="flex items-center gap-4 py-5 px-6 no-underline cyber-card neon-box-hover transition-all duration-300 hover:-translate-y-1">
                 <span className="text-3xl shrink-0">{c.icon}</span>
                 <div>
-                  <div style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:3, color:'rgba(180,0,0,0.6)' }} className="mb-1">{c.label}</div>
-                  <div style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(0,0,0,0.75)' }}>{c.value}</div>
+                  <div style={{ fontFamily:'var(--font-mono)', fontSize:9, letterSpacing:3, color:'rgba(48,54,79,0.55)' }} className="mb-1">{c.label}</div>
+                  <div style={{ fontFamily:'var(--font-mono)', fontSize:12, color:'rgba(48,54,79,0.8)' }}>{c.value}</div>
                 </div>
               </a>
             ))}
@@ -720,8 +719,8 @@ export default function App() {
 
           <a href="https://wa.me/6289908573023" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 no-underline transition-all duration-300 hover:-translate-y-0.5"
-            style={{ fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:3, fontWeight:700, background:'#cc0000', color:'#ffffff', padding:'18px 44px' }}
-            onMouseEnter={e=>e.currentTarget.style.boxShadow='0 0 40px rgba(204,0,0,0.4)'}
+            style={{ fontFamily:'var(--font-mono)', fontSize:11, letterSpacing:3, fontWeight:700, background:'#30364F', color:'#F0F0DB', padding:'18px 44px' }}
+            onMouseEnter={e=>e.currentTarget.style.boxShadow='0 0 40px rgba(48,54,79,0.35)'}
             onMouseLeave={e=>e.currentTarget.style.boxShadow='none'}>
             CHAT WHATSAPP →
           </a>
@@ -729,16 +728,18 @@ export default function App() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="py-12 px-6 text-center" style={{ background:'#111111', borderTop:'1px solid rgba(255,255,255,0.06)' }}>
-        <div className="font-serif text-3xl font-semibold tracking-widest mb-3">
-          <span className="text-white">BETHA</span>
-          <span className="neon-glow-sm" style={{ color:'#cc0000' }}>digital</span>
+      <footer className="py-12 px-6 text-center" style={{ background:'#30364F', borderTop:'1px solid rgba(240,240,219,0.08)' }}>
+        <div className="flex justify-center mb-3">
+          <img src="/icon.png" alt="Monogram" className="h-14 w-auto opacity-80" />
         </div>
-        <p style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, color:'rgba(255,255,255,0.3)' }} className="mb-2">
+        <div className="font-serif text-3xl font-semibold tracking-widest mb-3">
+          <span style={{ color:'#F0F0DB' }}>Monogram</span>
+        </div>
+        <p style={{ fontFamily:'var(--font-mono)', fontSize:10, letterSpacing:2, color:'rgba(240,240,219,0.35)' }} className="mb-2">
           Studio Foto &amp; Video Pernikahan Profesional · Sejak 2010
         </p>
-        <p style={{ fontFamily:'var(--font-mono)', fontSize:9, color:'rgba(255,255,255,0.15)' }}>
-          © 2024 BETHAdigital. ALL RIGHTS RESERVED.
+        <p style={{ fontFamily:'var(--font-mono)', fontSize:9, color:'rgba(240,240,219,0.18)' }}>
+          © {new Date().getFullYear()} Monogram. ALL RIGHTS RESERVED.
         </p>
       </footer>
     </div>

@@ -1,18 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Share+Tech+Mono&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Forum', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'Share Tech Mono', 'Courier New', monospace;
 
-  --color-gold: #cc0000;
-  --color-gold-light: #ff4444;
-  --color-gold-dark: #990000;
-  --color-cream: #111111;
-  --color-cream-dark: #f5f5f5;
-  --color-charcoal: #111111;
-  --color-charcoal-mid: #333333;
+  --color-primary:   #F0F0DB;
+  --color-secondary: #E1D9BC;
+  --color-accent:    #ACBAC4;
+  --color-dark:      #30364F;
+
+  --color-gold:       #30364F;
+  --color-gold-light: #ACBAC4;
+  --color-gold-dark:  #1e2236;
+  --color-cream:      #F0F0DB;
+  --color-cream-dark: #E1D9BC;
+  --color-charcoal:   #30364F;
+  --color-charcoal-mid: #4a5068;
 }
 
 html {
@@ -22,8 +27,8 @@ html {
 
 body {
   margin: 0;
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #F0F0DB;
+  color: #30364F;
   overflow-x: hidden;
 }
 
