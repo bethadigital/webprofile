@@ -131,7 +131,15 @@ function WeddingRings({ width = 96 }) {
 }
 
 /* ── Animate In ── */
-function AnimateIn({ children, delay = 0, className = '' }) {
+const TRANSFORMS = {
+  bottom: ['translateY(44px)', 'translateY(0)'],
+  top:    ['translateY(-44px)', 'translateY(0)'],
+  left:   ['translateX(-50px)', 'translateX(0)'],
+  right:  ['translateX(50px)',  'translateX(0)'],
+  scale:  ['scale(0.9)',        'scale(1)'],
+}
+
+function AnimateIn({ children, delay = 0, className = '', from = 'bottom' }) {
   const ref = useRef(null)
   const [vis, setVis] = useState(false)
   useEffect(() => {
@@ -142,11 +150,12 @@ function AnimateIn({ children, delay = 0, className = '' }) {
     if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
   }, [])
+  const [from0, to0] = TRANSFORMS[from] ?? TRANSFORMS.bottom
   return (
     <div ref={ref} className={className} style={{
       opacity: vis ? 1 : 0,
-      transform: vis ? 'translateY(0)' : 'translateY(36px)',
-      transition: `opacity 0.75s ease ${delay}s, transform 0.75s ease ${delay}s`,
+      transform: vis ? to0 : from0,
+      transition: `opacity 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
     }}>{children}</div>
   )
 }
@@ -330,9 +339,36 @@ export default function App() {
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [activeVideo, setActiveVideo] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+  const heroBgRef = useRef(null)
   const closeLightbox = useCallback(() => setLightboxIndex(null), [])
   const prevPhoto = useCallback(() => setLightboxIndex(i => (i - 1 + galleryPhotos.length) % galleryPhotos.length), [])
   const nextPhoto = useCallback(() => setLightboxIndex(i => (i + 1) % galleryPhotos.length), [])
+
+  useEffect(() => {
+    let rafId = null
+    const onScroll = () => {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        const sy = window.scrollY
+        const max = document.body.scrollHeight - window.innerHeight
+        setScrollProgress(max > 0 ? sy / max : 0)
+        setScrollY(sy)
+        if (heroBgRef.current) {
+          heroBgRef.current.style.transform = `translateY(${sy * 0.35}px)`
+        }
+        rafId = null
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const smoothScrollTo = useCallback((id) => {
+    const el = document.querySelector(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
 
   const navLinks = [['Tentang','#about'],['Foto','#gallery'],['Video','#video'],['Event','#event'],['Paket','#packages']]
 
@@ -341,6 +377,9 @@ export default function App() {
 
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-50" style={{ background:'rgba(240,240,219,0.95)', backdropFilter:'blur(16px)', borderBottom:'1px solid rgba(48,54,79,0.1)' }}>
+        {/* Scroll progress bar */}
+        <div className="absolute bottom-0 left-0 h-[2px] pointer-events-none"
+          style={{ width:`${scrollProgress * 100}%`, background:'rgba(172,186,196,0.9)', transition:'width 0.1s linear' }} />
         <div className="max-w-6xl mx-auto px-8 h-[66px] flex items-center justify-between">
           <div className="flex items-center gap-3 font-serif text-2xl font-semibold tracking-widest">
             <img src="/icon.png" alt="Mono Gram" className="h-9 w-auto" />
@@ -354,14 +393,16 @@ export default function App() {
                 <a href={href} className="no-underline transition-colors"
                   style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, color:'rgba(48,54,79,0.55)' }}
                   onMouseEnter={e => e.currentTarget.style.color='#30364F'}
-                  onMouseLeave={e => e.currentTarget.style.color='rgba(48,54,79,0.55)'}>
+                  onMouseLeave={e => e.currentTarget.style.color='rgba(48,54,79,0.55)'}
+                  onClick={e => { e.preventDefault(); smoothScrollTo(href) }}>
                   {label}
                 </a>
               </li>
             ))}
             <li>
               <a href="#contact" className="no-underline transition-all hover:-translate-y-0.5"
-                style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, background:'#30364F', color:'#F0F0DB', padding:'10px 20px', fontWeight:400 }}>
+                style={{ fontFamily:'var(--font-serif)', fontSize:13, letterSpacing:2, background:'#30364F', color:'#F0F0DB', padding:'10px 20px', fontWeight:400 }}
+                onClick={e => { e.preventDefault(); smoothScrollTo('#contact') }}>
                 Hubungi
               </a>
             </li>
@@ -390,7 +431,7 @@ export default function App() {
                 <a href={href}
                   className="block no-underline py-3 transition-colors"
                   style={{ fontFamily:'var(--font-serif)', fontSize:16, letterSpacing:1, color:'rgba(48,54,79,0.65)', borderBottom:'1px solid rgba(48,54,79,0.07)' }}
-                  onClick={() => setMobileMenuOpen(false)}>
+                  onClick={e => { e.preventDefault(); setMobileMenuOpen(false); setTimeout(() => smoothScrollTo(href), 150) }}>
                   {label}
                 </a>
               </li>
@@ -399,7 +440,7 @@ export default function App() {
               <a href="#contact"
                 className="block no-underline text-center py-3 transition-all"
                 style={{ fontFamily:'var(--font-serif)', fontSize:15, background:'#30364F', color:'#F0F0DB', letterSpacing:2 }}
-                onClick={() => setMobileMenuOpen(false)}>
+                onClick={e => { e.preventDefault(); setMobileMenuOpen(false); setTimeout(() => smoothScrollTo('#contact'), 150) }}>
                 Hubungi
               </a>
             </li>
@@ -410,11 +451,13 @@ export default function App() {
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background:'#30364F' }}>
 
-        {/* Wedding photo background */}
-        <div className="absolute inset-0 pointer-events-none" style={{
+        {/* Wedding photo background — parallax */}
+        <div ref={heroBgRef} className="absolute pointer-events-none" style={{
+          inset: '-15% 0',
           backgroundImage: 'url(https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80)',
           backgroundSize: 'cover', backgroundPosition: 'center 30%',
           filter: 'brightness(0.35) saturate(0.4)',
+          willChange: 'transform',
         }} />
 
         {/* Gradient vignette */}
@@ -534,11 +577,11 @@ export default function App() {
           </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {[
-              { icon:'📷', title:'FOTOGRAFI', desc:'Tim fotografer berpengalaman dengan peralatan terbaik' },
-              { icon:'🎬', title:'VIDEOGRAFI', desc:'Video sinematik berkualitas tinggi yang menyentuh hati' },
-              { icon:'🖨️', title:'CETAK PREMIUM', desc:'Hasil cetak eksklusif dengan material terbaik' },
+              { icon:'📷', title:'FOTOGRAFI', desc:'Tim fotografer berpengalaman dengan peralatan terbaik', from:'left' },
+              { icon:'🎬', title:'VIDEOGRAFI', desc:'Video sinematik berkualitas tinggi yang menyentuh hati', from:'bottom' },
+              { icon:'🖨️', title:'CETAK PREMIUM', desc:'Hasil cetak eksklusif dengan material terbaik', from:'right' },
             ].map((p, i) => (
-              <AnimateIn key={p.title} delay={i * 0.13}>
+              <AnimateIn key={p.title} delay={i * 0.13} from={p.from}>
                 <div className="relative p-8 cyber-card neon-box-hover overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                   <div className="cyber-corners">
                     <div className="cyber-corner cyber-corner-tl" />
@@ -696,7 +739,7 @@ export default function App() {
           </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {weddingPackages.map((pkg, i) => (
-              <AnimateIn key={pkg.name} delay={i * 0.1}>
+              <AnimateIn key={pkg.name} delay={i * 0.1} from={['left','scale','right'][i]}>
                 <PackageCard pkg={pkg} />
               </AnimateIn>
             ))}
@@ -721,7 +764,7 @@ export default function App() {
           </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto items-start">
             {preweddingPackages.map((pkg, i) => (
-              <AnimateIn key={pkg.name} delay={i * 0.12}>
+              <AnimateIn key={pkg.name} delay={i * 0.12} from={i === 0 ? 'left' : 'right'}>
                 <PackageCard pkg={pkg} />
               </AnimateIn>
             ))}
