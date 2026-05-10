@@ -339,7 +339,6 @@ export default function App() {
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [activeVideo, setActiveVideo] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [scrollY, setScrollY] = useState(0)
   const heroBgRef = useRef(null)
   const closeLightbox = useCallback(() => setLightboxIndex(null), [])
@@ -352,8 +351,6 @@ export default function App() {
       if (rafId) return
       rafId = requestAnimationFrame(() => {
         const sy = window.scrollY
-        const max = document.body.scrollHeight - window.innerHeight
-        setScrollProgress(max > 0 ? sy / max : 0)
         setScrollY(sy)
         if (heroBgRef.current) {
           heroBgRef.current.style.transform = `translateY(${sy * 0.35}px)`
@@ -377,9 +374,6 @@ export default function App() {
 
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-50" style={{ background:'rgba(240,240,219,0.95)', backdropFilter:'blur(16px)', borderBottom:'1px solid rgba(48,54,79,0.1)' }}>
-        {/* Scroll progress bar */}
-        <div className="absolute bottom-0 left-0 h-[2px] pointer-events-none"
-          style={{ width:`${scrollProgress * 100}%`, background:'rgba(172,186,196,0.9)', transition:'width 0.1s linear' }} />
         <div className="max-w-6xl mx-auto px-8 h-[66px] flex items-center justify-between">
           <div className="flex items-center gap-3 font-serif text-2xl font-semibold tracking-widest">
             <img src="/icon.png" alt="Mono Gram" className="h-9 w-auto" />
@@ -689,7 +683,7 @@ export default function App() {
       </section>
 
       {/* ── Video Company ── */}
-      <section id="Event" className="py-28 px-6" style={{ background:'#F0F0DB' }}>
+      <section id="event" className="py-28 px-6" style={{ background:'#F0F0DB' }}>
         <div className="max-w-6xl mx-auto text-center">
           <AnimateIn>
             <SectionLabel>VIDEO COMPANY</SectionLabel>
